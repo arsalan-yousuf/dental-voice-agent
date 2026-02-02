@@ -1,5 +1,6 @@
 "use client";
 
+import type Vapi from "@vapi-ai/web";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 type CallStatus = "idle" | "connecting" | "active" | "ended";
@@ -21,7 +22,7 @@ export function VapiVoiceDemo() {
   const [volume, setVolume] = useState(0);
   const [error, setError] = useState<string | null>(null);
   const [callDurationSeconds, setCallDurationSeconds] = useState(0);
-  const vapiRef = useRef<{ start: (id: string) => void; stop: () => void; setMuted: (m: boolean) => void; on: (e: string, fn: (...args: unknown[]) => void) => void } | null>(null);
+  const vapiRef = useRef<Vapi | null>(null);
   const [sdkReady, setSdkReady] = useState(false);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
